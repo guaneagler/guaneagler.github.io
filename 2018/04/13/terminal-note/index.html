@@ -98,27 +98,28 @@
 
 
   
-  <meta name="keywords" content="Eagle" />
+  <meta name="keywords" content="terminal,git,bash," />
 
 
-<meta name="description" content="BLOG-SOURCEThis is source of my blog">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Eagle&#39;s Blog">
-<meta property="og:url" content="https://guaneagler.github.io/README.html">
+<meta name="description" content="Some configuration for terminal.">
+<meta name="keywords" content="terminal,git,bash">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Terminal Note">
+<meta property="og:url" content="https://guaneagler.github.io/2018/04/13/terminal-note/index.html">
 <meta property="og:site_name" content="Eagle&#39;s Blog">
-<meta property="og:description" content="BLOG-SOURCEThis is source of my blog">
+<meta property="og:description" content="Some configuration for terminal.">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-03-11T13:09:45.407Z">
+<meta property="og:updated_time" content="2018-04-13T13:42:39.122Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Eagle&#39;s Blog">
-<meta name="twitter:description" content="BLOG-SOURCEThis is source of my blog">
+<meta name="twitter:title" content="Terminal Note">
+<meta name="twitter:description" content="Some configuration for terminal.">
 
 
 
 
 
 
-  <link rel="canonical" href="https://guaneagler.github.io/README.html"/>
+  <link rel="canonical" href="https://guaneagler.github.io/2018/04/13/terminal-note/"/>
 
 
 
@@ -127,7 +128,7 @@
     sidebar: "",
   };
 </script>
-  <title> | Eagle's Blog</title>
+  <title>Terminal Note | Eagle's Blog</title>
   
 
 
@@ -266,44 +267,157 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://guaneagler.github.io/2018/04/13/terminal-note/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Eagle">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Eagle's Blog">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-<h1 class="post-title" itemprop="name headline"></h1>
-
-<div class="post-meta">
-  
-  
-
-
-
-</div>
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
-          <h1 id="BLOG-SOURCE"><a href="#BLOG-SOURCE" class="headerlink" title="BLOG-SOURCE"></a>BLOG-SOURCE</h1><p>This is source of my blog</p>
-
+          <h1 class="post-title" itemprop="name headline">Terminal Note</h1>
         
-      </div>
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-13T15:22:46+08:00">2018-04-13</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+              <div class="post-description">Some configuration for terminal.</div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
       
+
+      
+        <h2 id="Color-bash-configuration"><a href="#Color-bash-configuration" class="headerlink" title="Color bash configuration"></a>Color bash configuration</h2><p>Open ~/.bashrc file, and uncomment ‘force_color_prompt’ label.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">force_color_prompt=yes</span><br></pre></td></tr></table></figure></p>
+<h2 id="Update-bash-prompt"><a href="#Update-bash-prompt" class="headerlink" title="Update bash prompt."></a>Update bash prompt.</h2><p>Open ~/.bashrc file, Update variable <em>PS1</em><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">if [ &quot;$color_prompt&quot; = yes ]; then</span><br><span class="line">    PS1=&apos;$&#123;debian_chroot:+($debian_chroot)&#125;\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ &apos;</span><br><span class="line">else</span><br><span class="line">    PS1=&apos;$&#123;debian_chroot:+($debian_chroot)&#125;\u@\h:\w\$ &apos;</span><br><span class="line">fi</span><br></pre></td></tr></table></figure></p>
+<h2 id="Git-branch-show-configuration"><a href="#Git-branch-show-configuration" class="headerlink" title="Git branch show configuration"></a>Git branch show configuration</h2><p>Open ~/.bashrc file and add config below.<br>Please make sure the <em>unset color_prompt force_color_prompt</em> commands below the script.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">if [ &quot;$color_prompt&quot; = yes ]; then</span><br><span class="line"> PS1=&apos;$&#123;debian_chroot:+($debian_chroot)&#125;\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[01;31m\] $(parse_git_branch)\[\033[00m\]\$ &apos;</span><br><span class="line">else</span><br><span class="line"> PS1=&apos;$&#123;debian_chroot:+($debian_chroot)&#125;\u@\h:\w$(parse_git_branch)\$ &apos;</span><br><span class="line">fi</span><br><span class="line">unset color_prompt force_color_prompt</span><br></pre></td></tr></table></figure></p>
+<h2 id="alias-configuration"><a href="#alias-configuration" class="headerlink" title="alias configuration"></a>alias configuration</h2><p>Add script below to ~/.bashrc<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alias gs=&apos;git status&apos;</span><br></pre></td></tr></table></figure></p>
+
       
     </div>
+
     
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/terminal/" rel="tag"># terminal</a>
+          
+            <a href="/tags/git/" rel="tag"># git</a>
+          
+            <a href="/tags/bash/" rel="tag"># bash</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/31/mac-lamp/" rel="next" title="Mac MAMP">
+                <i class="fa fa-chevron-left"></i> Mac MAMP
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
 
 
 
-    
-    
-    
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
@@ -514,7 +628,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#BLOG-SOURCE"><span class="nav-number">1.</span> <span class="nav-text">BLOG-SOURCE</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Color-bash-configuration"><span class="nav-number">1.</span> <span class="nav-text">Color bash configuration</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Update-bash-prompt"><span class="nav-number">2.</span> <span class="nav-text">Update bash prompt.</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Git-branch-show-configuration"><span class="nav-number">3.</span> <span class="nav-text">Git branch show configuration</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#alias-configuration"><span class="nav-number">4.</span> <span class="nav-text">alias configuration</span></a></li></ol></div>
             
 
           </div>
