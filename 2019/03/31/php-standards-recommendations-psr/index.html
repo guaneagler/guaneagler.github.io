@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.0.5" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=6.0.5">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png?v=6.0.5">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?v=6.0.5">
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '6.0.5',
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  
+  <meta name="keywords" content="PSR,PHP," />
+
+
+<meta name="description" content="粗略翻译PSR ACCEPTED">
+<meta name="keywords" content="PSR,PHP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PHP Standards Recommendations(PSR)">
+<meta property="og:url" content="https://guaneagler.github.io/2019/03/31/php-standards-recommendations-psr/index.html">
+<meta property="og:site_name" content="Eagle&#39;s Blog">
+<meta property="og:description" content="粗略翻译PSR ACCEPTED">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-03-31T11:01:51.743Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="PHP Standards Recommendations(PSR)">
+<meta name="twitter:description" content="粗略翻译PSR ACCEPTED">
+
+
+
+
+
+
+  <link rel="canonical" href="https://guaneagler.github.io/2019/03/31/php-standards-recommendations-psr/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+  <title>PHP Standards Recommendations(PSR) | Eagle's Blog</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Eagle's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-user"></i> <br />About</a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+  
+
+
+
+ </div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://guaneagler.github.io/2019/03/31/php-standards-recommendations-psr/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Eagle">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Eagle's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">PHP Standards Recommendations(PSR)</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-31T12:05:07+08:00">2019-03-31</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+              <div class="post-description">粗略翻译PSR ACCEPTED</div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="PSR-1-代码规范"><a href="#PSR-1-代码规范" class="headerlink" title="PSR-1 代码规范"></a>PSR-1 代码规范</h3><ol>
+<li>使用php tag &lt;?php ?&gt; 或 &lt;?= ?&gt;</li>
+<li>使用UTF-8 无BOM</li>
+<li>文件内可以声明方法/类,可以写执行性脚本，但是不能同时存在</li>
+<li>Namespace必须遵循（PSR-0，PSR-4）</li>
+<li>Class 命名StudlyCaps</li>
+<li>类常量声明大写加下划线</li>
+<li>类方法声明camelCase</li>
+</ol>
+<h3 id="PSR-2-代码规范"><a href="#PSR-2-代码规范" class="headerlink" title="PSR-2 代码规范"></a>PSR-2 代码规范</h3><ol>
+<li>代码必须遵循PSR-1</li>
+<li>代码缩进 4空格</li>
+<li>代码行长度没有强制性的限制，建议限制120c，最好是80c</li>
+<li>namespace和use后要有空行</li>
+<li>类的左括号要换行，右括号要在类内容后空一行</li>
+<li>方法的左括号要换行，右括号要在方法内容后空一行</li>
+<li>变量和方法的可见性必须被声明，abstract和final声明在可见性变量之前，static声明在可见性变量之后</li>
+<li>控制语句的关键字后面要有空格，方法调用不需要</li>
+<li>控制语句的左括号不换行，右括号换行</li>
+<li>控制语句的左括号前要有空格，右括号前则没有空格</li>
+</ol>
+<h3 id="PSR-3-Logger-Interface"><a href="#PSR-3-Logger-Interface" class="headerlink" title="PSR-3 Logger Interface"></a>PSR-3 Logger Interface</h3><ol>
+<li>Logger Interface 暴露8个方法来记录8种级别(debug, info, notice, warning, error, critical, alert, emergency)的log</li>
+<li>第九个方法log，第一个参数接收log的级别，来调用任何一个级别的log，输出要同8种级别的log结果相同；第一个参数不能接收除了8种级别以外的类别，否则抛出异常</li>
+<li>每一个log方法接收一个string作为异常信息，或者含有toString的对象；异常信息中可以含有占位符，实现中要用相关数组中的值来替换</li>
+</ol>
+<h3 id="PSR-4-Autoloader"><a href="#PSR-4-Autoloader" class="headerlink" title="PSR-4 Autoloader"></a>PSR-4 Autoloader</h3><p>此PSR描述了根据文件路径自动加载类，也描述了自动加载的文件要怎么放</p>
+<ol>
+<li>下文中的Class包括Class，Interface，Traits和其他类似的结构</li>
+<li>一个完整合规的Class应该是这样的格式 \<namespacename>(\<subnamespacenames>)*\<classname><ol>
+<li>必须有一个最高级别的命名空间，一般为vendor名</li>
+<li>可以有一个或者多个子命名空间</li>
+<li>必须包含最终的类名</li>
+<li>下划线在类中没有任何意义</li>
+<li>字母字符可以大小写任意组合(\open.org\Sub\HelloWorld)</li>
+<li>Class名是大小写敏感的</li>
+</ol>
+</classname></subnamespacenames></namespacename></li>
+<li>当加载一个对应完整合规的Class的文件时<ol>
+<li>命名空间或者子命名空间必须至少对应一个目录</li>
+<li>连续的子命名空间对应连续的子目录，分隔符对应目录分隔符</li>
+<li>Class名对应Class文件名，对应声明的Class名</li>
+</ol>
+</li>
+<li>自动加载实现不能跑出异常，不能输出错误，也不能返回值<blockquote>
+<p><a href="https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-4-autoloader-examples.md" target="_blank" rel="noopener">自动加载实现</a></p>
+</blockquote>
+</li>
+</ol>
+<h3 id="PSR-6-Caching-Interface"><a href="#PSR-6-Caching-Interface" class="headerlink" title="PSR-6 Caching Interface"></a>PSR-6 Caching Interface</h3><blockquote>
+<p><a href="https://www.php-fig.org/psr/psr-6/" target="_blank" rel="noopener">Ref PSR-6</a></p>
+</blockquote>
+<h5 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h5><p>这个PSR让开发者开发出的cache库能被已存在的框架和系统无缝接入，不需要再开发</p>
+<h5 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h5><ol>
+<li>调用Cache库 - 调用cache库的方法或者类库只需要关注cache interface提供的方法，不需要关注具体的实现细节</li>
+<li>实现Cache库 - 为了给调用库提供Cache服务，Cache必须实现标准。Cache必须实现以下两个Interface，Cache\CacheItemPoolInterface和Cache\CacheItemInterface，TTL必须是秒级别的</li>
+<li>TTL - Time To Live, Cache的有效时间</li>
+<li>Expiration - Cache实际过期时间</li>
+<li>Key - 一个确定一条Cache记录的唯一关键字</li>
+<li>Hit - 能通过key访问到对应的cache记录并且记录没过期</li>
+<li>Miss - 通过key访问的cache记录不存在或者已过期</li>
+<li>Deferred(延迟) - Cache记录存储有时并不是实时的，为了批量化操作。要保证延迟保存的条目被保存进去。外部库调用commit的时候必须将所有延迟项保存到库里面。实现Cache的库要想办法实现什么时候保存延迟项。请求一个被延迟了的item，必须由延迟项返回，而不是从新访问</li>
+</ol>
+<h5 id="数据"><a href="#数据" class="headerlink" title="数据"></a>数据</h5><p>实现的Cache库必须能保存所有类型的php数据 Strings/ Integers/ Floats/ Boolean/ Null/ Array/ Object<br>返回数据要与存入数据完全匹配</p>
+<h5 id="关键词汇"><a href="#关键词汇" class="headerlink" title="关键词汇"></a>关键词汇</h5><ol>
+<li>Pool 保存所有Cache Item的地方</li>
+<li>Items 所有的item都以key/value形式存在，key不能变，value可变</li>
+</ol>
+<h5 id="错误处理"><a href="#错误处理" class="headerlink" title="错误处理"></a>错误处理</h5><p>不能抛出异常，要内部进行处理</p>
+<h5 id="Interface"><a href="#Interface" class="headerlink" title="Interface"></a>Interface</h5><p>CacheItemInterface defines an interface for interacting with objects inside a cache.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">namespace Psr\Cache;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * CacheItemInterface defines an interface for interacting with objects inside a cache.</span><br><span class="line"> */</span><br><span class="line">interface CacheItemInterface</span><br><span class="line">&#123;</span><br><span class="line">    public function getKey();</span><br><span class="line">    public function get();</span><br><span class="line">    public function isHit();</span><br><span class="line">    public function set($value);</span><br><span class="line">    public function expiresAt($expiration);</span><br><span class="line">    public function expiresAfter($time);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>CacheItemPoolInterface generates CacheItemInterface objects</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">namespace Psr\Cache;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * CacheItemPoolInterface generates CacheItemInterface objects.</span><br><span class="line"> */</span><br><span class="line">interface CacheItemPoolInterface</span><br><span class="line">&#123;</span><br><span class="line">    public function getItem($key);</span><br><span class="line">    public function getItems(array $keys = array());</span><br><span class="line">    public function hasItem($key);</span><br><span class="line">    public function clear();</span><br><span class="line">    public function deleteItem($key);</span><br><span class="line">    public function deleteItems(array $keys);</span><br><span class="line">    public function save(CacheItemInterface $item);</span><br><span class="line">    public function saveDeferred(CacheItemInterface $item);</span><br><span class="line">    public function commit();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="PSR-7-HTTP-message-interfaces"><a href="#PSR-7-HTTP-message-interfaces" class="headerlink" title="PSR-7 HTTP message interfaces"></a>PSR-7 HTTP message interfaces</h3><ol>
+<li><p>Psr\Http\Message\MessageInterface</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">namespace Psr\Http\Message;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * RequestInterface 和 ResponseInterface 的基类</span><br><span class="line"> */</span><br><span class="line">interface MessageInterface</span><br><span class="line">&#123;</span><br><span class="line">    public function getProtocolVersion();</span><br><span class="line">    // Return updated version.</span><br><span class="line">    public function withProtocolVersion($version);</span><br><span class="line">    public function getHeaders();</span><br><span class="line">    public function hasHeader($name);</span><br><span class="line">    public function getHeader($name);</span><br><span class="line">    public function getHeaderLine($name);</span><br><span class="line">    public function withHeader($name, $value);</span><br><span class="line">    public function withAddedHeader($name, $value);</span><br><span class="line">    // Return header without header item</span><br><span class="line">    public function withoutHeader($name);</span><br><span class="line">    // Return StreamInterface</span><br><span class="line">    public function getBody();</span><br><span class="line">    public function withBody(StreamInterface $body);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Psr\Http\Message\RequestInterface</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">namespace Psr\Http\Message;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * Representation of an outgoing, client-side request.</span><br><span class="line"> * 服务器端创建的请求类</span><br><span class="line"> */</span><br><span class="line">interface RequestInterface extends MessageInterface</span><br><span class="line">&#123;</span><br><span class="line">    // 大多数情况返回URL&lt;string&gt;</span><br><span class="line">    public function getRequestTarget();</span><br><span class="line">    public function withRequestTarget($requestTarget);</span><br><span class="line">    public function getMethod();</span><br><span class="line">    public function withMethod($method);</span><br><span class="line">    // Return UriInterface</span><br><span class="line">    public function getUri();</span><br><span class="line">    // Returns an UriInterface instance with the provided URI.</span><br><span class="line">    public function withUri(UriInterface $uri, $preserveHost = false);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Psr\Http\Message\ServerRequestInterface</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">namespace Psr\Http\Message;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * Representation of an incoming, server-side HTTP request.</span><br><span class="line"> * 客户端请求在服务器端生成的请求类</span><br><span class="line"> */</span><br><span class="line">interface ServerRequestInterface extends RequestInterface</span><br><span class="line">&#123;</span><br><span class="line">    // Return $_SERVER 但不一定要相同</span><br><span class="line">    public function getServerParams();</span><br><span class="line">    // Return $_COOKIE</span><br><span class="line">    public function getCookieParams();</span><br><span class="line">    public function withCookieParams(array $cookies);</span><br><span class="line">    public function getQueryParams();</span><br><span class="line">    public function withQueryParams(array $query);</span><br><span class="line">    // Return array An array tree of UploadedFileInterface instances</span><br><span class="line">    public function getUploadedFiles();</span><br><span class="line">    public function withUploadedFiles(array $uploadedFiles);</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * Retrieve any parameters provided in the request body.</span><br><span class="line">     *</span><br><span class="line">     * If the request Content-Type is either application/x-www-form-urlencoded</span><br><span class="line">     * or multipart/form-data, and the request method is POST, this method MUST</span><br><span class="line">     * return the contents of $_POST.</span><br><span class="line">     *</span><br><span class="line">     * Otherwise, this method may return any results of deserializing</span><br><span class="line">     * the request body content; as parsing returns structured content, the</span><br><span class="line">     * potential types MUST be arrays or objects only. A null value indicates</span><br><span class="line">     * the absence of body content.</span><br><span class="line">     *</span><br><span class="line">     * @return null|array|object The deserialized body parameters, if any.</span><br><span class="line">     *     These will typically be an array or object.</span><br><span class="line">     */</span><br><span class="line">    public function getParsedBody();</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * Return an instance with the specified body parameters.</span><br><span class="line">     *</span><br><span class="line">     * These MAY be injected during instantiation.</span><br><span class="line">     *</span><br><span class="line">     * If the request Content-Type is either application/x-www-form-urlencoded</span><br><span class="line">     * or multipart/form-data, and the request method is POST, use this method</span><br><span class="line">     * ONLY to inject the contents of $_POST.</span><br><span class="line">     *</span><br><span class="line">     * The data IS NOT REQUIRED to come from $_POST, but MUST be the results of</span><br><span class="line">     * deserializing the request body content. Deserialization/parsing returns</span><br><span class="line">     * structured data, and, as such, this method ONLY accepts arrays or objects,</span><br><span class="line">     * or a null value if nothing was available to parse.</span><br><span class="line">     *</span><br><span class="line">     * As an example, if content negotiation determines that the request data</span><br><span class="line">     * is a JSON payload, this method could be used to create a request</span><br><span class="line">     * instance with the deserialized parameters.</span><br><span class="line">     *</span><br><span class="line">     * This method MUST be implemented in such a way as to retain the</span><br><span class="line">     * immutability of the message, and MUST return an instance that has the</span><br><span class="line">     * updated body parameters.</span><br><span class="line">     *</span><br><span class="line">     * @param null|array|object $data The deserialized body data. This will</span><br><span class="line">     *     typically be in an array or object.</span><br><span class="line">     * @return static</span><br><span class="line">     * @throws \InvalidArgumentException if an unsupported argument type is</span><br><span class="line">     *     provided.</span><br><span class="line">     */</span><br><span class="line">    public function withParsedBody($data);</span><br><span class="line">    // 获取从Request变量派生出来的一些变量 即经过处理或合成的Request变量存储在attribute中</span><br><span class="line">    public function getAttributes();</span><br><span class="line">    public function getAttribute($name, $default = null);</span><br><span class="line">    public function withAttribute($name, $value);</span><br><span class="line">    public function withoutAttribute($name);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Psr\Http\Message\ResponseInterface</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">namespace Psr\Http\Message;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * Representation of an outgoing, server-side response.</span><br><span class="line"> */</span><br><span class="line">interface ResponseInterface extends MessageInterface</span><br><span class="line">&#123;</span><br><span class="line">    public function getStatusCode();</span><br><span class="line">    public function withStatus($code, $reasonPhrase = &apos;&apos;);</span><br><span class="line">    public function getReasonPhrase();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Psr\Http\Message\StreamInterface</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">namespace Psr\Http\Message;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * Describes a data stream.</span><br><span class="line"> */</span><br><span class="line">interface StreamInterface</span><br><span class="line">&#123;</span><br><span class="line">    /**</span><br><span class="line">     * Reads all data from the stream into a string, from the beginning to end.</span><br><span class="line">     */</span><br><span class="line">    public function __toString();</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * Closes the stream and any underlying resources.</span><br><span class="line">     *</span><br><span class="line">     * @return void</span><br><span class="line">     */</span><br><span class="line">    public function close();</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * Separates any underlying resources from the stream.</span><br><span class="line">     *</span><br><span class="line">     * After the stream has been detached, the stream is in an unusable state.</span><br><span class="line">     *</span><br><span class="line">     * @return resource|null Underlying PHP stream, if any</span><br><span class="line">     */</span><br><span class="line">    public function detach();</span><br><span class="line"></span><br><span class="line">    public function getSize();</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * Returns the current position of the file read/write pointer</span><br><span class="line">     *</span><br><span class="line">     * @return int Position of the file pointer</span><br><span class="line">     * @throws \RuntimeException on error.</span><br><span class="line">     */</span><br><span class="line">    public function tell();</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * Returns true if the stream is at the end of the stream.</span><br><span class="line">     *</span><br><span class="line">     * @return bool</span><br><span class="line">     */</span><br><span class="line">    public function eof();</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * Returns whether or not the stream is seekable.</span><br><span class="line">     *</span><br><span class="line">     * @return bool</span><br><span class="line">     */</span><br><span class="line">    public function isSeekable();</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * Seek to a position in the stream.</span><br><span class="line">     *</span><br><span class="line">     * @see http://www.php.net/manual/en/function.fseek.php</span><br><span class="line">     * @param int $offset Stream offset</span><br><span class="line">     * @param int $whence Specifies how the cursor position will be calculated</span><br><span class="line">     *     based on the seek offset. Valid values are identical to the built-in</span><br><span class="line">     *     PHP $whence values for `fseek()`.  SEEK_SET: Set position equal to</span><br><span class="line">     *     offset bytes SEEK_CUR: Set position to current location plus offset</span><br><span class="line">     *     SEEK_END: Set position to end-of-stream plus offset.</span><br><span class="line">     * @throws \RuntimeException on failure.</span><br><span class="line">     */</span><br><span class="line">    public function seek($offset, $whence = SEEK_SET);</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * Seek to the beginning of the stream.</span><br><span class="line">     *</span><br><span class="line">     * If the stream is not seekable, this method will raise an exception;</span><br><span class="line">     * otherwise, it will perform a seek(0).</span><br><span class="line">     *</span><br><span class="line">     * @see seek()</span><br><span class="line">     * @see http://www.php.net/manual/en/function.fseek.php</span><br><span class="line">     * @throws \RuntimeException on failure.</span><br><span class="line">     */</span><br><span class="line">    public function rewind();</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * Returns whether or not the stream is writable.</span><br><span class="line">     *</span><br><span class="line">     * @return bool</span><br><span class="line">     */</span><br><span class="line">    public function isWritable();</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * Write data to the stream.</span><br><span class="line">     *</span><br><span class="line">     * @param string $string The string that is to be written.</span><br><span class="line">     * @return int Returns the number of bytes written to the stream.</span><br><span class="line">     * @throws \RuntimeException on failure.</span><br><span class="line">     */</span><br><span class="line">    public function write($string);</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * Returns whether or not the stream is readable.</span><br><span class="line">     *</span><br><span class="line">     * @return bool</span><br><span class="line">     */</span><br><span class="line">    public function isReadable();</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * Read data from the stream.</span><br><span class="line">     *</span><br><span class="line">     * @param int $length Read up to $length bytes from the object and return</span><br><span class="line">     *     them. Fewer than $length bytes may be returned if underlying stream</span><br><span class="line">     *     call returns fewer bytes.</span><br><span class="line">     * @return string Returns the data read from the stream, or an empty string</span><br><span class="line">     *     if no bytes are available.</span><br><span class="line">     * @throws \RuntimeException if an error occurs.</span><br><span class="line">     */</span><br><span class="line">    public function read($length);</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * Returns the remaining contents in a string</span><br><span class="line">     *</span><br><span class="line">     * @return string</span><br><span class="line">     * @throws \RuntimeException if unable to read.</span><br><span class="line">     * @throws \RuntimeException if error occurs while reading.</span><br><span class="line">     */</span><br><span class="line">    public function getContents();</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * Get stream metadata as an associative array or retrieve a specific key.</span><br><span class="line">     *</span><br><span class="line">     * The keys returned are identical to the keys returned from PHP&apos;s</span><br><span class="line">     * stream_get_meta_data() function.</span><br><span class="line">     *</span><br><span class="line">     * @see http://php.net/manual/en/function.stream-get-meta-data.php</span><br><span class="line">     * @param string $key Specific metadata to retrieve.</span><br><span class="line">     * @return array|mixed|null Returns an associative array if no key is</span><br><span class="line">     *     provided. Returns a specific key value if a key is provided and the</span><br><span class="line">     *     value is found, or null if the key is not found.</span><br><span class="line">     */</span><br><span class="line">    public function getMetadata($key = null);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Psr\Http\Message\UriInterface</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">namespace Psr\Http\Message;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * Value object representing a URI.</span><br><span class="line"> */</span><br><span class="line">interface UriInterface</span><br><span class="line">&#123;</span><br><span class="line">    // 协议</span><br><span class="line">    public function getScheme();</span><br><span class="line">    // [user-info@]host[:port]</span><br><span class="line">    public function getAuthority();</span><br><span class="line">    // user-info</span><br><span class="line">    public function getUserInfo();</span><br><span class="line">    public function getHost();</span><br><span class="line">    public function getPort();</span><br><span class="line">    // 为空的时候需要用户处理</span><br><span class="line">    public function getPath();</span><br><span class="line">    public function getQuery();</span><br><span class="line">    // #后的值</span><br><span class="line">    public function getFragment();</span><br><span class="line">    public function withScheme($scheme);</span><br><span class="line">    public function withUserInfo($user, $password = null);</span><br><span class="line">    public function withHost($host);</span><br><span class="line">    public function withPort($port);</span><br><span class="line">    public function withPath($path);</span><br><span class="line">    public function withQuery($query);</span><br><span class="line">    public function withFragment($fragment);</span><br><span class="line">    public function __toString();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Psr\Http\Message\UploadedFileInterface</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">namespace Psr\Http\Message;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * Value object representing a file uploaded through an HTTP request.</span><br><span class="line"> */</span><br><span class="line">interface UploadedFileInterface</span><br><span class="line">&#123;</span><br><span class="line">    /**</span><br><span class="line">     * Retrieve a stream representing the uploaded file.</span><br><span class="line">     *</span><br><span class="line">     * This method MUST return a StreamInterface instance, representing the</span><br><span class="line">     * uploaded file. The purpose of this method is to allow utilizing native PHP</span><br><span class="line">     * stream functionality to manipulate the file upload, such as</span><br><span class="line">     * stream_copy_to_stream() (though the result will need to be decorated in a</span><br><span class="line">     * native PHP stream wrapper to work with such functions).</span><br><span class="line">     *</span><br><span class="line">     * If the moveTo() method has been called previously, this method MUST raise</span><br><span class="line">     * an exception.</span><br><span class="line">     *</span><br><span class="line">     * @return StreamInterface Stream representation of the uploaded file.</span><br><span class="line">     * @throws \RuntimeException in cases when no stream is available.</span><br><span class="line">     * @throws \RuntimeException in cases when no stream can be created.</span><br><span class="line">     */</span><br><span class="line">    public function getStream();</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * Move the uploaded file to a new location.</span><br><span class="line">     *</span><br><span class="line">     * Use this method as an alternative to move_uploaded_file(). This method is</span><br><span class="line">     * guaranteed to work in both SAPI and non-SAPI environments.</span><br><span class="line">     * Implementations must determine which environment they are in, and use the</span><br><span class="line">     * appropriate method (move_uploaded_file(), rename(), or a stream</span><br><span class="line">     * operation) to perform the operation.</span><br><span class="line">     *</span><br><span class="line">     * $targetPath may be an absolute path, or a relative path. If it is a</span><br><span class="line">     * relative path, resolution should be the same as used by PHP&apos;s rename()</span><br><span class="line">     * function.</span><br><span class="line">     *</span><br><span class="line">     * The original file or stream MUST be removed on completion.</span><br><span class="line">     *</span><br><span class="line">     * If this method is called more than once, any subsequent calls MUST raise</span><br><span class="line">     * an exception.</span><br><span class="line">     *</span><br><span class="line">     * When used in an SAPI environment where $_FILES is populated, when writing</span><br><span class="line">     * files via moveTo(), is_uploaded_file() and move_uploaded_file() SHOULD be</span><br><span class="line">     * used to ensure permissions and upload status are verified correctly.</span><br><span class="line">     *</span><br><span class="line">     * If you wish to move to a stream, use getStream(), as SAPI operations</span><br><span class="line">     * cannot guarantee writing to stream destinations.</span><br><span class="line">     *</span><br><span class="line">     * @see http://php.net/is_uploaded_file</span><br><span class="line">     * @see http://php.net/move_uploaded_file</span><br><span class="line">     * @param string $targetPath Path to which to move the uploaded file.</span><br><span class="line">     * @throws \InvalidArgumentException if the $targetPath specified is invalid.</span><br><span class="line">     * @throws \RuntimeException on any error during the move operation.</span><br><span class="line">     * @throws \RuntimeException on the second or subsequent call to the method.</span><br><span class="line">     */</span><br><span class="line">    public function moveTo($targetPath);</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * Retrieve the file size.</span><br><span class="line">     *</span><br><span class="line">     * Implementations SHOULD return the value stored in the &quot;size&quot; key of</span><br><span class="line">     * the file in the $_FILES array if available, as PHP calculates this based</span><br><span class="line">     * on the actual size transmitted.</span><br><span class="line">     *</span><br><span class="line">     * @return int|null The file size in bytes or null if unknown.</span><br><span class="line">     */</span><br><span class="line">    public function getSize();</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * Retrieve the error associated with the uploaded file.</span><br><span class="line">     *</span><br><span class="line">     * The return value MUST be one of PHP&apos;s UPLOAD_ERR_XXX constants.</span><br><span class="line">     *</span><br><span class="line">     * If the file was uploaded successfully, this method MUST return</span><br><span class="line">     * UPLOAD_ERR_OK.</span><br><span class="line">     *</span><br><span class="line">     * Implementations SHOULD return the value stored in the &quot;error&quot; key of</span><br><span class="line">     * the file in the $_FILES array.</span><br><span class="line">     *</span><br><span class="line">     * @see http://php.net/manual/en/features.file-upload.errors.php</span><br><span class="line">     * @return int One of PHP&apos;s UPLOAD_ERR_XXX constants.</span><br><span class="line">     */</span><br><span class="line">    public function getError();</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * Retrieve the filename sent by the client.</span><br><span class="line">     *</span><br><span class="line">     * Do not trust the value returned by this method. A client could send</span><br><span class="line">     * a malicious filename with the intention to corrupt or hack your</span><br><span class="line">     * application.</span><br><span class="line">     *</span><br><span class="line">     * Implementations SHOULD return the value stored in the &quot;name&quot; key of</span><br><span class="line">     * the file in the $_FILES array.</span><br><span class="line">     *</span><br><span class="line">     * @return string|null The filename sent by the client or null if none</span><br><span class="line">     *     was provided.</span><br><span class="line">     */</span><br><span class="line">    public function getClientFilename();</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * Retrieve the media type sent by the client.</span><br><span class="line">     *</span><br><span class="line">     * Do not trust the value returned by this method. A client could send</span><br><span class="line">     * a malicious media type with the intention to corrupt or hack your</span><br><span class="line">     * application.</span><br><span class="line">     *</span><br><span class="line">     * Implementations SHOULD return the value stored in the &quot;type&quot; key of</span><br><span class="line">     * the file in the $_FILES array.</span><br><span class="line">     *</span><br><span class="line">     * @return string|null The media type sent by the client or null if none</span><br><span class="line">     *     was provided.</span><br><span class="line">     */</span><br><span class="line">    public function getClientMediaType();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/psr/" rel="tag"># PSR</a>
+          
+            <a href="/tags/php/" rel="tag"># PHP</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/30/drupal-design-pattern/" rel="next" title="Drupal & Design Pattern">
+                <i class="fa fa-chevron-left"></i> Drupal & Design Pattern
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="Eagle" />
+            
+              <p class="site-author-name" itemprop="name">Eagle</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">20</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">9</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">45</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/guaneagler" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:guaneagler@gmail.com" target="_blank" title="E-Mail"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#PSR-1-代码规范"><span class="nav-number">1.</span> <span class="nav-text">PSR-1 代码规范</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PSR-2-代码规范"><span class="nav-number">2.</span> <span class="nav-text">PSR-2 代码规范</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PSR-3-Logger-Interface"><span class="nav-number">3.</span> <span class="nav-text">PSR-3 Logger Interface</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PSR-4-Autoloader"><span class="nav-number">4.</span> <span class="nav-text">PSR-4 Autoloader</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PSR-6-Caching-Interface"><span class="nav-number">5.</span> <span class="nav-text">PSR-6 Caching Interface</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#目标"><span class="nav-number">5.0.1.</span> <span class="nav-text">目标</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#定义"><span class="nav-number">5.0.2.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#数据"><span class="nav-number">5.0.3.</span> <span class="nav-text">数据</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#关键词汇"><span class="nav-number">5.0.4.</span> <span class="nav-text">关键词汇</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#错误处理"><span class="nav-number">5.0.5.</span> <span class="nav-text">错误处理</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Interface"><span class="nav-number">5.0.6.</span> <span class="nav-text">Interface</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PSR-7-HTTP-message-interfaces"><span class="nav-number">6.</span> <span class="nav-text">PSR-7 HTTP message interfaces</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Eagle</span>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.0.5"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.0.5"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.0.5"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.0.5"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.0.5"></script>
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
